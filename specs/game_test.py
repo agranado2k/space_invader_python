@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, patch
 
 from tkinter import Tk, Canvas
 from space_invaders.game import Game, TankDrawer, MyCanvas
-from space_invaders.tank import *
+from space_invaders.tank import Tank
 
 
 class TestGame(TestCase):

@@ -1,5 +1,6 @@
 
 from tkinter import Tk, Canvas
+from space_invaders.tank import Tank
 
 class MyCanvas(object):
     HEIGHT = 500
@@ -52,9 +53,9 @@ class Game(object):
     def tank(self):
         return self.the_tank
 
-# master = Tk()
-# master.title( "Space Invanders" )
-# canvas = Canvas(master, height=MyCanvas.HEIGHT, width=MyCanvas.WIDTH)
-# canvas.pack()
-# Game(canvas, MyCanvas.WIDTH, MyCanvas.HEIGHT)
-# master.mainloop()
+master = Tk()
+master.title( "Space Invanders" )
+canvas = Canvas(master, height=MyCanvas.HEIGHT, width=MyCanvas.WIDTH)
+canvas.pack()
+Game(canvas, MyCanvas.WIDTH, MyCanvas.HEIGHT)
+master.mainloop()
