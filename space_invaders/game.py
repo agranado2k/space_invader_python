@@ -39,7 +39,7 @@ class Game(object):
 
     def setup(self, canvas, width, height):
         self.the_tank = Tank(width, height, TankDrawer(canvas))
-        # self.the_tank.draw()
+        self.the_tank.draw()
 
     def clock(self):
         return 0
@@ -53,9 +53,9 @@ class Game(object):
     def tank(self):
         return self.the_tank
 
-master = Tk()
-master.title( "Space Invanders" )
-canvas = Canvas(master, height=MyCanvas.HEIGHT, width=MyCanvas.WIDTH)
-canvas.pack()
-Game(canvas, MyCanvas.WIDTH, MyCanvas.HEIGHT)
-master.mainloop()
+# master = Tk()
+# master.title( "Space Invanders" )
+# canvas = Canvas(master, height=MyCanvas.HEIGHT, width=MyCanvas.WIDTH)
+# canvas.pack()
+# Game(canvas, MyCanvas.WIDTH, MyCanvas.HEIGHT)
+# master.mainloop()
