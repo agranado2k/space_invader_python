@@ -1,5 +1,4 @@
 
-from tkinter import Tk, Canvas
 from space_invaders.tank import Tank
 
 class MyCanvas(object):
@@ -53,9 +52,11 @@ class Game(object):
     def tank(self):
         return self.the_tank
 
-# master = Tk()
-# master.title( "Space Invanders" )
-# canvas = Canvas(master, height=MyCanvas.HEIGHT, width=MyCanvas.WIDTH)
-# canvas.pack()
-# Game(canvas, MyCanvas.WIDTH, MyCanvas.HEIGHT)
-# master.mainloop()
+    def move_tank_to_right(self):
+        self.the_tank.change_direction(Tank.RIGHT)
+        self.the_tank.move()
+
+    def move_tank_to_left(self):
+        self.the_tank.change_direction(Tank.LEFT)
+        self.the_tank.move()
+
