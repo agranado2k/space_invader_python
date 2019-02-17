@@ -1,47 +1,41 @@
+import threading
+import time
 
 from space_invaders.tank import Tank
+from space_invaders.drawers.tank_drawer import TankDrawer
 
 class MyCanvas(object):
     HEIGHT = 500
     WIDTH = 300
 
 
-class TankDrawer(object):
-    def __init__(self, canvas):
-        self.canvas = canvas
-
-    def draw(self, x, y, width, height, cannon_width, cannon_height, color):
-        tank_begin_pos_x = x/2 - width/2
-        tank_begin_pos_y = y - height
-        tank_end_pos_x = x/2 + width/2
-        tank_end_pos_y = y
-        self.canvas.create_rectangle(tank_begin_pos_x,
-                                     tank_begin_pos_y,
-                                     tank_end_pos_x,
-                                     tank_end_pos_y,
-                                     fill=color)
-
-        cannon_begin_pos_x = x/2 - cannon_width/2
-        cannon_begin_pos_y = y - height - cannon_height
-        cannon_end_pos_x = x/2 + cannon_width/2
-        cannon_end_pos_y = y - height
-        self.canvas.create_rectangle(cannon_begin_pos_x,
-                                     cannon_begin_pos_y,
-                                     cannon_end_pos_x,
-                                     cannon_end_pos_y,
-                                     fill=color)
-
-
 class Game(object):
-    def __init__(self, canvas, width, height):
+    def __init__(self, canvas, width, height, is_redraw=True):
+        self.is_redraw = is_redraw
         self.setup(canvas, width, height)
 
     def setup(self, canvas, width, height):
+        self.canvas = canvas
         self.the_tank = Tank(width, height, TankDrawer(canvas))
-        self.the_tank.draw()
+
+        self.interval_to_draw = 0.08
+        thread = threading.Thread(target=self.clock, args=())
+        thread.daemon = True
+        thread.start()
 
     def clock(self):
+        while self.is_redraw:
+            self.redraw()
+            time.sleep(self.interval_to_draw)
+
         return 0
+
+    def redraw(self):
+        self.canvas.delete('all')
+        self.the_tank.draw()
+
+    def objecst_in_canvas(self):
+        return self.canvas.find_all()
 
     def invaders(self):
         return []

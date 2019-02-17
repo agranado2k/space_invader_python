@@ -1,8 +1,8 @@
 
 class Tank(object):
 
-    RIGHT = 'right'
-    LEFT = 'left'
+    RIGHT = 'Right'
+    LEFT = 'Left'
     COLOR = 'black'
     HEIGHT = 15
     WIDTH = 35

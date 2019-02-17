@@ -11,7 +11,7 @@ from space_invaders.tank import Tank
 class TestGame(TestCase):
     def setUp(self):
         canvas = MagicMock()
-        self.game = Game(canvas, MyCanvas.WIDTH, MyCanvas.HEIGHT)
+        self.game = Game(canvas, MyCanvas.WIDTH, MyCanvas.HEIGHT, is_redraw=False)
 
 
     def test_initial_game_state(self):
