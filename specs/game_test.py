@@ -30,3 +30,8 @@ class TestGame(TestCase):
 
         self.assertEqual(self.game.tank().x_pos(), MyCanvas.WIDTH - Tank.SPEED)
 
+    def test_tank_fire_missile(self):
+        self.game.tank_fire()
+
+        self.assertEqual(len(self.game.missiles()), 1)
+
