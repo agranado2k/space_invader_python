@@ -13,6 +13,7 @@ class TestTank(TestCase):
         # canvas = MagicMock()
         # drawer = TankDrawer(canvas)
 
+
     def test_create_missile(self):
         cannon_x = 10
         cannon_y = 30

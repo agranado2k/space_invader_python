@@ -16,17 +16,22 @@ class Tank(object):
         self.drawer = drawer
         self._direction = self.RIGHT
 
+
     def x_pos(self):
         return self.x
+
 
     def y_pos(self):
         return self.y
 
+
     def direction(self):
         return self._direction
 
+
     def change_direction(self, direct):
         self._direction = direct
+
 
     def move(self):
         speed = self.SPEED
@@ -34,6 +39,7 @@ class Tank(object):
             speed *= -1
 
         self.x += speed
+
 
     def draw(self):
         self.drawer.draw(self.x,

@@ -15,6 +15,7 @@ class TestTankDrawer(TestCase):
         drawer = TankDrawer(canvas)
         self.tank = Tank(MyCanvas.WIDTH, MyCanvas.HEIGHT, drawer)
 
+
     @patch('tkinter.Canvas.create_rectangle')
     def test_draw_tank_on_initial_position(self, create_rectangle_mock):
         self.tank.draw()

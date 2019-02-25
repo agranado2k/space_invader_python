@@ -15,6 +15,7 @@ class Game(object):
         self.is_redraw = is_redraw
         self.setup(canvas, width, height)
 
+
     def setup(self, canvas, width, height):
         self.canvas = canvas
         self.the_tank = Tank(width, height, TankDrawer(canvas))
@@ -25,6 +26,7 @@ class Game(object):
         thread.daemon = True
         thread.start()
 
+
     def clock(self):
         while self.is_redraw:
             self.redraw()
@@ -33,30 +35,38 @@ class Game(object):
 
         return 0
 
+
     def redraw(self):
         self.canvas.delete('all')
         self.the_tank.draw()
         # draw all missiles
 
+
     def objecst_in_canvas(self):
         return self.canvas.find_all()
+
 
     def invaders(self):
         return []
 
+
     def missiles(self):
         return self.i_missiles
 
+
     def tank(self):
         return self.the_tank
+
 
     def move_tank_to_right(self):
         self.the_tank.change_direction(Tank.RIGHT)
         self.the_tank.move()
 
+
     def move_tank_to_left(self):
         self.the_tank.change_direction(Tank.LEFT)
         self.the_tank.move()
+
 
     def tank_fire(self):
         missile = Missile.create(self.the_tank.x_pos(), self.the_tank.y_pos())

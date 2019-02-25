@@ -20,15 +20,18 @@ class TestGame(TestCase):
         self.assertEqual(len(self.game.missiles()), 0)
         self.assertIsInstance(self.game.tank(), Tank)
 
+
     def test_move_tank_to_right(self):
         self.game.move_tank_to_right()
 
         self.assertEqual(self.game.tank().x_pos(), MyCanvas.WIDTH + Tank.SPEED)
 
+
     def test_move_tank_to_left(self):
         self.game.move_tank_to_left()
 
         self.assertEqual(self.game.tank().x_pos(), MyCanvas.WIDTH - Tank.SPEED)
+
 
     def test_tank_fire_missile(self):
         self.game.tank_fire()
