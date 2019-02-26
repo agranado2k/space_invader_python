@@ -4,6 +4,7 @@ import time
 from space_invaders.tank import Tank
 from space_invaders.missile import Missile
 from space_invaders.drawers.tank_drawer import TankDrawer
+from space_invaders.drawers.missile_drawer import MissileDrawer
 
 class MyCanvas(object):
     HEIGHT = 500
@@ -39,7 +40,8 @@ class Game(object):
     def redraw(self):
         self.canvas.delete('all')
         self.the_tank.draw()
-        # draw all missiles
+        for missile in self.i_missiles:
+            missile.draw()
 
 
     def objecst_in_canvas(self):
@@ -69,5 +71,5 @@ class Game(object):
 
 
     def tank_fire(self):
-        missile = Missile.create(self.the_tank.x_pos(), self.the_tank.y_pos())
+        missile = Missile.create(self.the_tank.x_pos(), self.the_tank.y_pos(), MissileDrawer(self.canvas))
         self.i_missiles.append(missile)

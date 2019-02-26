@@ -21,6 +21,17 @@ class TestGame(TestCase):
         self.assertIsInstance(self.game.tank(), Tank)
 
 
+    @patch('space_invaders.missile.Missile.draw')
+    @patch('space_invaders.tank.Tank.draw')
+    def test_game_have_to_redraw_all_objects(self, mock_tank_draw, mock_missile_draw):
+        self.game.tank_fire()
+
+        self.game.redraw()
+
+        mock_tank_draw.assert_called_once()
+        mock_missile_draw.assert_called_once()
+
+
     def test_move_tank_to_right(self):
         self.game.move_tank_to_right()
 

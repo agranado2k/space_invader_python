@@ -1,7 +1,7 @@
 import test_helper
 
 from unittest import TestCase
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 from space_invaders.game import TankDrawer, MyCanvas
 from space_invaders.tank import Tank
