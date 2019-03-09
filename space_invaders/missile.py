@@ -25,6 +25,6 @@ class Missile(object):
     def draw(self):
         self.drawer.draw(self.pos_x,
                          self.pos_y,
-                         self.pos_x + self.WIDTH,
-                         self.pos_y + self.HEIGHT,
+                         self.pos_x + self.HEIGHT,
+                         self.pos_y + self.WIDTH,
                          self.COLOR)

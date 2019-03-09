@@ -25,6 +25,6 @@ class TestMissileDrawer(TestCase):
 
         create_rectangle_mock.assert_any_call(self.pos_x,
                                               self.pos_y,
-                                              self.pos_x + Missile.WIDTH,
-                                              self.pos_y + Missile.HEIGHT,
+                                              self.pos_x + Missile.HEIGHT,
+                                              self.pos_y + Missile.WIDTH,
                                               fill=Missile.COLOR)

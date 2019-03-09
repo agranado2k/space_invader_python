@@ -4,7 +4,7 @@ from space_invaders.game import MyCanvas, Game
 
 def key(event):
     if event.keysym == 'space':
-        print("Space key pressed")
+        game.tank_fire()
     elif event.keysym == 'Left':
         game.move_tank_to_left()
     elif event.keysym == 'Right':

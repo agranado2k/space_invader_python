@@ -19,7 +19,7 @@ class Game(object):
 
     def setup(self, canvas, width, height):
         self.canvas = canvas
-        self.the_tank = Tank(width, height, TankDrawer(canvas))
+        self.the_tank = Tank(width/2, height, TankDrawer(canvas))
         self.i_missiles = []
 
         self.interval_to_draw = 0.08
@@ -71,5 +71,7 @@ class Game(object):
 
 
     def tank_fire(self):
-        missile = Missile.create(self.the_tank.x_pos(), self.the_tank.y_pos(), MissileDrawer(self.canvas))
+        missile_x = self.the_tank.x_pos() - Tank.WIDTH/2 + Tank.CANNON_WIDTH/2
+        missile_height = self.the_tank.y_pos() - Tank.CANNON_HEIGHT - Missile.HEIGHT
+        missile = Missile.create(missile_x , missile_height, MissileDrawer(self.canvas))
         self.i_missiles.append(missile)

@@ -13,7 +13,7 @@ class TestTankDrawer(TestCase):
         master = Tk()
         canvas = Canvas(master, height=MyCanvas.HEIGHT, width=MyCanvas.WIDTH)
         drawer = TankDrawer(canvas)
-        self.tank = Tank(MyCanvas.WIDTH, MyCanvas.HEIGHT, drawer)
+        self.tank = Tank(MyCanvas.WIDTH/2, MyCanvas.HEIGHT, drawer)
 
 
     @patch('tkinter.Canvas.create_rectangle')

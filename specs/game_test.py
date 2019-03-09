@@ -6,6 +6,7 @@ from unittest.mock import MagicMock, patch
 from tkinter import Tk, Canvas
 from space_invaders.game import Game, TankDrawer, MyCanvas
 from space_invaders.tank import Tank
+from space_invaders.missile import Missile
 
 
 class TestGame(TestCase):
@@ -35,17 +36,20 @@ class TestGame(TestCase):
     def test_move_tank_to_right(self):
         self.game.move_tank_to_right()
 
-        self.assertEqual(self.game.tank().x_pos(), MyCanvas.WIDTH + Tank.SPEED)
+        self.assertEqual(self.game.tank().x_pos(), MyCanvas.WIDTH/2 + Tank.SPEED)
 
 
     def test_move_tank_to_left(self):
         self.game.move_tank_to_left()
 
-        self.assertEqual(self.game.tank().x_pos(), MyCanvas.WIDTH - Tank.SPEED)
+        self.assertEqual(self.game.tank().x_pos(), MyCanvas.WIDTH/2 - Tank.SPEED)
 
 
     def test_tank_fire_missile(self):
         self.game.tank_fire()
 
+        missile = self.game.missiles()[0]
         self.assertEqual(len(self.game.missiles()), 1)
+        self.assertEqual(missile.x_pos(), self.game.tank().x_pos() - Tank.WIDTH/2 + Tank.CANNON_WIDTH/2)
+        self.assertEqual(missile.y_pos(), self.game.tank().y_pos() - Tank.CANNON_HEIGHT - Missile.HEIGHT)
 
