@@ -1,37 +1,16 @@
+from space_invaders.game_object import GameObject
 
-class Tank(object):
-
-    RIGHT = 'Right'
-    LEFT = 'Left'
-    COLOR = 'black'
+class Tank(GameObject):
     HEIGHT = 15
     WIDTH = 35
+    RIGHT = 'Right'
+    LEFT = 'Left'
     CANNON_WIDTH=10
     CANNON_HEIGHT=10
-    SPEED = 10
 
     def __init__(self, x, y, drawer):
-        self.x = x
-        self.y = y
-        self.drawer = drawer
+        GameObject.__init__(self, x, y, drawer)
         self._direction = self.RIGHT
-
-
-    def x_pos(self):
-        return self.x
-
-
-    def y_pos(self):
-        return self.y
-
-
-    def direction(self):
-        return self._direction
-
-
-    def change_direction(self, direct):
-        self._direction = direct
-
 
     def move(self):
         speed = self.SPEED
@@ -40,6 +19,12 @@ class Tank(object):
 
         self.x += speed
 
+    def direction(self):
+        return self._direction
+
+
+    def change_direction(self, direct):
+        self._direction = direct
 
     def draw(self):
         self.drawer.draw(self.x,
