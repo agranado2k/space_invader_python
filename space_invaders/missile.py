@@ -1,7 +1,8 @@
 
 class Missile(object):
-    HEIGHT = 15
-    WIDTH = 30
+    SPEED = 10
+    HEIGHT = 5
+    WIDTH = 10
     COLOR = 'black'
 
     def __init__(self, pos_x, pos_y, drawer):
@@ -21,6 +22,8 @@ class Missile(object):
     def y_pos(self):
         return self.pos_y
 
+    def move(self):
+        self.pos_y -= self.SPEED
 
     def draw(self):
         self.drawer.draw(self.pos_x,

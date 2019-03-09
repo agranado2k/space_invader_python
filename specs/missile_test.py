@@ -30,3 +30,12 @@ class TestMissile(TestCase):
                                                  self.cannon_x + Missile.HEIGHT,
                                                  self.cannon_y + Missile.WIDTH,
                                                  Missile.COLOR)
+
+    def test_move_itself(self):
+        initial_x_pos = self.missile.x_pos()
+        initial_y_pos = self.missile.y_pos()
+
+        self.missile.move()
+
+        self.assertEquals(self.missile.x_pos(), initial_x_pos)
+        self.assertEquals(self.missile.y_pos(), initial_y_pos - Missile.SPEED)

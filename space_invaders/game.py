@@ -39,6 +39,7 @@ class Game(object):
 
     def redraw(self):
         self.canvas.delete('all')
+        self.move_objects()
         self.the_tank.draw()
         for missile in self.i_missiles:
             missile.draw()
@@ -59,6 +60,9 @@ class Game(object):
     def tank(self):
         return self.the_tank
 
+    def move_objects(self):
+        for missile in self.i_missiles:
+            missile.move()
 
     def move_tank_to_right(self):
         self.the_tank.change_direction(Tank.RIGHT)
@@ -71,7 +75,7 @@ class Game(object):
 
 
     def tank_fire(self):
-        missile_x = self.the_tank.x_pos() - Tank.WIDTH/2 + Tank.CANNON_WIDTH/2
+        missile_x = self.the_tank.x_pos() - Tank.CANNON_WIDTH/2
         missile_height = self.the_tank.y_pos() - Tank.CANNON_HEIGHT - Missile.HEIGHT
         missile = Missile.create(missile_x , missile_height, MissileDrawer(self.canvas))
         self.i_missiles.append(missile)
