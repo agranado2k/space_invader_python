@@ -13,11 +13,14 @@ class Tank(GameObject):
         self._direction = self.RIGHT
 
     def move(self):
-        speed = self.SPEED
+        self.set_x_pos(self.x_pos() + self.tank_speed())
+
+    def tank_speed(self):
+        speed = self.speed()
         if self._direction == self.LEFT:
             speed *= -1
 
-        self.x += speed
+        return speed
 
     def direction(self):
         return self._direction

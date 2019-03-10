@@ -5,7 +5,7 @@ class Missile(GameObject):
     WIDTH = 10
 
     def move(self):
-        self.y -= self.SPEED
+        self.y -= self.speed()
 
     def create(x, y, drawer):
         return Missile(x, y, drawer)
