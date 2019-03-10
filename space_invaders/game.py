@@ -14,6 +14,7 @@ class MyCanvas(object):
 class Game(object):
     def __init__(self, canvas, width, height, is_redraw=True):
         self.is_redraw = is_redraw
+        self.width = width
         self.setup(canvas, width, height)
 
 
@@ -65,14 +66,26 @@ class Game(object):
             missile.move()
 
     def move_tank_to_right(self):
+        if self.is_tank_reached_right_edge():
+            return
+
         self.the_tank.change_direction(Tank.RIGHT)
         self.the_tank.move()
 
+    def is_tank_reached_right_edge(self):
+        tank_right_limit = self.tank().x_pos() + Tank.WIDTH/2 - Tank.SPEED
+        return tank_right_limit >= self.width
 
     def move_tank_to_left(self):
+        if self.is_tank_reached_left_edge():
+            return
+
         self.the_tank.change_direction(Tank.LEFT)
         self.the_tank.move()
 
+    def is_tank_reached_left_edge(self):
+        tank_left_limit = self.tank().x_pos() - Tank.WIDTH/2
+        return tank_left_limit <= 0
 
     def tank_fire(self):
         missile_x = self.the_tank.x_pos() - Tank.CANNON_WIDTH/2

@@ -34,16 +34,31 @@ class TestGame(TestCase):
         mock_missile_draw.assert_called_once()
         mock_move_objects.assert_called_once()
 
-    def test_move_tank_to_right(self):
+    @patch('space_invaders.game.Game.is_tank_reached_right_edge', return_value=False)
+    def test_move_tank_to_right(self, mock_is_tank_reached_right_edge):
         self.game.move_tank_to_right()
 
+        mock_is_tank_reached_right_edge.assert_called_once()
         self.assertEqual(self.game.tank().x_pos(), MyCanvas.WIDTH/2 + Tank.SPEED)
 
+    def test_limit_tank_moviment_to_right_to_canvas_edge(self):
+        for i in range(100):
+            self.game.move_tank_to_right()
 
-    def test_move_tank_to_left(self):
+        self.assertTrue(self.game.is_tank_reached_right_edge())
+
+    @patch('space_invaders.game.Game.is_tank_reached_left_edge', return_value=False)
+    def test_move_tank_to_left(self, mock_is_fank_reached_left_edge):
         self.game.move_tank_to_left()
 
+        mock_is_fank_reached_left_edge.assert_called_once()
         self.assertEqual(self.game.tank().x_pos(), MyCanvas.WIDTH/2 - Tank.SPEED)
+
+    def test_limit_tank_moviment_to_left_to_canvas_edge(self):
+        for i in range(100):
+            self.game.move_tank_to_left()
+
+        self.assertTrue(self.game.is_tank_reached_left_edge())
 
     def test_tank_fire_missile(self):
         self.game.tank_fire()

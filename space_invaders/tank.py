@@ -22,13 +22,12 @@ class Tank(GameObject):
     def direction(self):
         return self._direction
 
-
     def change_direction(self, direct):
         self._direction = direct
 
     def draw(self):
-        self.drawer.draw(self.x,
-                         self.y,
+        self.drawer.draw(self.x_pos(),
+                         self.y_pos(),
                          self.WIDTH,
                          self.HEIGHT,
                          self.CANNON_WIDTH,

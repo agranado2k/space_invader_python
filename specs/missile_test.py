@@ -37,5 +37,5 @@ class TestMissile(TestCase):
 
         self.missile.move()
 
-        self.assertEquals(self.missile.x_pos(), initial_x_pos)
-        self.assertEquals(self.missile.y_pos(), initial_y_pos - Missile.SPEED)
+        self.assertEqual(self.missile.x_pos(), initial_x_pos)
+        self.assertEqual(self.missile.y_pos(), initial_y_pos - Missile.SPEED)
